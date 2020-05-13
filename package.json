@@ -1,0 +1,38 @@
+{
+  "name": "@jambonz/b-helpers",
+  "version": "0.3.4",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test node test/ | ./node_modules/.bin/tap-spec",
+    "coverage": "./node_modules/.bin/nyc --reporter html --report-dir ./coverage npm run test",
+    "jslint": "eslint app.js lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jambonz/db-helpers.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "Dave Horton",
+  "bugs": {
+    "url": "https://github.com/jambonz/db-helpers/issues"
+  },
+  "homepage": "https://github.com/jambonz/db-helpers#readme",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "mysql2": "^2.0.2",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "config": "^3.3.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "nyc": "^15.0.1",
+    "tap-dot": "^2.0.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.13.2"
+  }
+}

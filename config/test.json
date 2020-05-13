@@ -1,0 +1,11 @@
+{
+  "logging": {
+    "level": "error"
+  },
+  "mysql": {
+    "host": "localhost",
+    "user": "jambones_test",
+    "database": "jambones_test",
+    "password": "jambones_test"
+  }
+}
