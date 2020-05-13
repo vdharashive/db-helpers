@@ -1,4 +1,4 @@
-# jambonz-db-helpers  [![Build Status](https://secure.travis-ci.org/jambonz/jambonz-db-helpers.png)](http://travis-ci.org/jambonz/jambonz-db-helpers)
+# jambonz-db-helpers  [![Build Status](https://secure.travis-ci.org/jambonz/db-helpers.png)](http://travis-ci.org/jambonz/db-helpers)
 
 
 A set of helper functions to access data in the [jambones database](https://github.com/jambonz/jambones-api-server/blob/master/db/jambones-sql.sql).
