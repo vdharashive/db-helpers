@@ -18,6 +18,7 @@ module.exports = function(mysqlConfig, logger) {
     lookupAppByPhoneNumber: require('./lib/lookup-app-by-phone-number').bind(null, pool, logger),
     lookupAppBySid: require('./lib/lookup-app-by-sid').bind(null, pool, logger),
     lookupAppByRealm: require('./lib/lookup-app-by-realm').bind(null, pool, logger),
+    lookupAppByTeamsTenant: require('./lib/lookup-app-by-teams-tenant').bind(null, pool, logger),
     lookupAccountBySid: require('./lib/lookup-account-by-sid').bind(null, pool, logger),
     addSbcAddress: require('./lib/add-sbc-address').bind(null, pool, logger)
   };

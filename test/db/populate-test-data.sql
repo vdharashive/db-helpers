@@ -40,3 +40,6 @@ update accounts set device_calling_application_sid = '3b43e39f-4346-4218-8434-a5
 
 insert into phone_numbers (phone_number_sid, number, voip_carrier_sid, account_sid, application_sid)
 values ('5cd93593-fe66-443c-9ab3-4f52c13c3d28', '15083084809', '287c1452-620d-4195-9f19-c9814ef90d78', '422affb5-4d1e-45e8-b2a4-2623f08b95ef', '3b43e39f-4346-4218-8434-a53130e8be49');
+
+insert into ms_teams_tenants (ms_teams_tenant_sid,service_provider_sid,account_sid,application_sid,tenant_fqdn)
+values ('11446d20-9c92-4a33-80f3-90d0132a0b83','7e306626-4ee9-471b-af8d-27d9f6042fc9','422affb5-4d1e-45e8-b2a4-2623f08b95ef','3b43e39f-4346-4218-8434-a53130e8be49','customers.drachtio.org');

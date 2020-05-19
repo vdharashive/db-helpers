@@ -8,7 +8,7 @@ process.on('unhandledRejection', (reason, p) => {
 
 test('application tests', async(t) => {
   const fn = require('..');
-  const {lookupAppByPhoneNumber, lookupAppBySid, lookupAppByRealm, lookupAccountBySid} = fn(mysqlOpts);
+  const {lookupAppByPhoneNumber, lookupAppBySid, lookupAppByRealm, lookupAppByTeamsTenant, lookupAccountBySid} = fn(mysqlOpts);
   try {
     let app = await lookupAppByPhoneNumber('15083084809');
     //console.log(`app: ${JSON.stringify(app)}`);
@@ -20,8 +20,11 @@ test('application tests', async(t) => {
     let account = lookupAccountBySid('422affb5-4d1e-45e8-b2a4-2623f08b95ef');
     t.ok(account !== null, 'retrieves account by sid');
 
-    account = lookupAppByRealm('sip.drachtio.org');
-    t.ok(account !== null, 'retrieves account by sip realm');
+    app = lookupAppByRealm('sip.drachtio.org');
+    t.ok(app !== null, 'retrieves app by sip realm');
+
+    app = lookupAppByTeamsTenant('customers.drachtio.org');
+    t.ok(app !== null, 'retrieves app by ms teams tenant');
 
     t.end();
   }
