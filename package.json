@@ -1,6 +1,6 @@
 {
   "name": "@jambonz/db-helpers",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jambonz/db-helpers.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "author": "Dave Horton",
   "bugs": {
