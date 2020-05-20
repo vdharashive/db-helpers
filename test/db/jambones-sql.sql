@@ -1,6 +1,6 @@
 /* SQLEditor (MySQL (2))*/
 
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS call_routes;
 
@@ -22,15 +22,13 @@ DROP TABLE IF EXISTS sip_gateways;
 
 DROP TABLE IF EXISTS voip_carriers;
 
-DROP TABLE IF EXISTS applications;
-
 DROP TABLE IF EXISTS accounts;
+
+DROP TABLE IF EXISTS applications;
 
 DROP TABLE IF EXISTS service_providers;
 
 DROP TABLE IF EXISTS webhooks;
-
-SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE call_routes
 (
@@ -254,3 +252,5 @@ ALTER TABLE accounts ADD FOREIGN KEY service_provider_sid_idxfk_3 (service_provi
 ALTER TABLE accounts ADD FOREIGN KEY registration_hook_sid_idxfk_1 (registration_hook_sid) REFERENCES webhooks (webhook_sid);
 
 ALTER TABLE accounts ADD FOREIGN KEY device_calling_application_sid_idxfk (device_calling_application_sid) REFERENCES applications (application_sid);
+
+SET FOREIGN_KEY_CHECKS=1;
