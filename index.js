@@ -21,6 +21,7 @@ module.exports = function(mysqlConfig, logger) {
     lookupAppByTeamsTenant: require('./lib/lookup-app-by-teams-tenant').bind(null, pool, logger),
     lookupAccountBySid: require('./lib/lookup-account-by-sid').bind(null, pool, logger),
     addSbcAddress: require('./lib/add-sbc-address').bind(null, pool, logger),
+    lookupAllTeamsFQDNs: require('./lib/lookup-all-teams-fqdns').bind(null, pool, logger),
     lookupTeamsByAccount: require('./lib/lookup-teams-by-account').bind(null, pool, logger)
   };
 };
