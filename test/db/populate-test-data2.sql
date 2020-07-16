@@ -12,7 +12,7 @@ values ('ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 'Account A1', '3f35518f-5a0d-4c2
 insert into accounts (account_sid, name, service_provider_sid, sip_realm, registration_hook_sid)
 values ('5f190a4f-b997-4f04-b56e-03c627ea547d', 'Account A2', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'customerA.mycompany.com', '6c6a4deb-a0f3-4c22-aa1b-e95a009ad540');
 
-insert into voip_carriers (voip_carrier_sid, name) values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco');
+insert into voip_carriers (voip_carrier_sid, name, e164_leading_plus) values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco', 1);
 insert into voip_carriers (voip_carrier_sid, name) values ('ceafc86d-11f3-4dbd-9523-1e0f4502bfc7', 'eastco');
 insert into voip_carriers (voip_carrier_sid, name) values ('64035d77-f735-4b19-9dc1-15f8cf44636c', 'southco');
 insert into voip_carriers (voip_carrier_sid, name) values ('53128ee1-a5f9-4542-8129-c6b1292728ec', 'northco');

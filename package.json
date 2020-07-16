@@ -1,6 +1,6 @@
 {
   "name": "@jambonz/db-helpers",
-  "version": "0.3.8",
+  "version": "0.4.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,16 +20,16 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.1.1",
-    "mysql2": "^2.0.2",
-    "uuid": "^7.0.3"
+    "mysql2": "^2.1.0",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "config": "^3.3.1",
-    "eslint": "^6.8.0",
+    "eslint": "^7.4.0",
     "eslint-plugin-promise": "^4.2.1",
-    "nyc": "^15.0.1",
+    "nyc": "^15.1.0",
     "tap-dot": "^2.0.0",
     "tap-spec": "^5.0.0",
-    "tape": "^4.13.2"
+    "tape": "^5.0.1"
   }
 }

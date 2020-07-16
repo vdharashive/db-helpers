@@ -14,7 +14,7 @@ test('lcr tests', async(t) => {
   try {
     let gateways = await performLcr('4412838238238');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
-    t.ok(gateways[0] === '3.3.3.3:5060', 'uses lcr when regex matches');
+    t.ok(gateways[0] === 'sip:+4412838238238@3.3.3.3:5060', 'uses lcr when regex matches');
 
     try {
       gateways = await performLcr('16172375089');
@@ -45,7 +45,7 @@ test('lcr tests', async(t) => {
 
     gateways = await performLcr('4412838238238');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
-    t.ok(gateways.length === 8 && gateways[7] === '10.10.10.10:5060', 'handles multiple carriers');
+    t.ok(gateways.length === 8 && gateways[7] === 'sip:4412838238238@10.10.10.10:5060', 'handles multiple carriers');
 
     t.end();
   }
