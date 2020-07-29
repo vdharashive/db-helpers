@@ -1,4 +1,5 @@
 require('./create-test-db');
+require('./account');
 require('./teams');
 require('./lookup-auth');
 require('./sip-gateways');

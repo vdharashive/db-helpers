@@ -17,13 +17,13 @@ test('application tests', async(t) => {
     app = await lookupAppBySid('3b43e39f-4346-4218-8434-a53130e8be49');
     t.ok(app !== null, 'retrieves application by sid');
     
-    let account = lookupAccountBySid('422affb5-4d1e-45e8-b2a4-2623f08b95ef');
+    let account = await lookupAccountBySid('422affb5-4d1e-45e8-b2a4-2623f08b95ef');
     t.ok(account !== null, 'retrieves account by sid');
 
-    app = lookupAppByRealm('sip.drachtio.org');
+    app = await lookupAppByRealm('sip.drachtio.org');
     t.ok(app !== null, 'retrieves app by sip realm');
 
-    app = lookupAppByTeamsTenant('customers.drachtio.org');
+    app = await lookupAppByTeamsTenant('daveh.customers.drachtio.org');
     t.ok(app !== null, 'retrieves app by ms teams tenant');
 
     t.end();
