@@ -1,4 +1,5 @@
 require('./create-test-db');
+require('./voip-carriers');
 require('./account');
 require('./teams');
 require('./lookup-auth');
