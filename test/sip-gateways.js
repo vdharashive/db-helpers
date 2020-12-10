@@ -8,8 +8,12 @@ process.on('unhandledRejection', (reason, p) => {
 
 test('sip gateways tests', async(t) => {
   const fn = require('..');
-  const {lookupSipGatewayBySignalingAddress} = fn(mysqlOpts);
+  const {lookupSipGatewayBySignalingAddress, lookupSipGatewaysByCarrier} = fn(mysqlOpts);
   try {
+    let gateways = await lookupSipGatewaysByCarrier('287c1452-620d-4195-9f19-c9814ef90d78');
+    t.ok(gateways.length === 2 && gateways[1].port === 5062, 'retrieves sip gateways for a voip carrier');
+    //console.log(gateways);
+
     let gateway = await lookupSipGatewayBySignalingAddress('3.3.3.3', 5060);
     //console.log(`gateway: ${JSON.stringify(gateway)}`);
     t.ok(gateway.sip_gateway_sid === '124a5339-c62c-4075-9e19-f4de70a96597', 'retrieves sip gateway with default port');
