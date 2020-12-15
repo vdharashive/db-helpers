@@ -32,16 +32,16 @@ test('lcr tests', async(t) => {
     }
 
     // remove all lcr configuration
-    let stdout = execSync(`mysql -h localhost -u root ${pwd} -D jambones_test -e "delete from lcr_carrier_set_entry"`);
-    stdout = execSync(`mysql -h localhost -u root ${pwd} -D jambones_test -e "delete from lcr_routes"`);
+    let stdout = execSync(`mysql -h 127.0.0.1 -u root --protocol=tcp -D jambones_test -e "delete from lcr_carrier_set_entry"`);
+    stdout = execSync(`mysql -h 127.0.0.1 -u root --protocol=tcp -D jambones_test -e "delete from lcr_routes"`);
 
     gateways = await performLcr('4412838238238');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
     t.ok(gateways.length === 2, 'when lcr is not configured at all, return a randomly shuffled list of outbound gateways');
 
     // clear data and insert data with multiple carriers in same priority
-    execSync(`mysql -h localhost -u root ${pwd} -D jambones_test < ${__dirname}/db/jambones-sql.sql`);
-    execSync(`mysql -h localhost -u root ${pwd} -D jambones_test < ${__dirname}/db/populate-test-data2.sql`);
+    execSync(`mysql -h 127.0.0.1 -u root --protocol=tcp -D jambones_test < ${__dirname}/db/jambones-sql.sql`);
+    execSync(`mysql -h 127.0.0.1 -u root --protocol=tcp -D jambones_test < ${__dirname}/db/populate-test-data2.sql`);
 
     gateways = await performLcr('4412838238238');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);

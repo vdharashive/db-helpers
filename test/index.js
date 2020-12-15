@@ -1,3 +1,4 @@
+require('./docker_start');
 require('./create-test-db');
 require('./voip-carriers');
 require('./account');
@@ -7,4 +8,4 @@ require('./sip-gateways');
 require('./app');
 require('./lcr');
 require('./add-sbc-address');
-require('./remove-test-db');
+require('./docker_stop');

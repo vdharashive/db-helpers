@@ -1,5 +1,4 @@
 const mysql = require('mysql2');
-const lookupSipGatewaysByCarrier = require('./lib/lookup-sip-gateways-by-carrier');
 
 module.exports = function(mysqlConfig, logger) {
   const pool = mysql.createPool(mysqlConfig);
