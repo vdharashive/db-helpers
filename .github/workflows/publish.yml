@@ -1,4 +1,4 @@
-name: CI
+name: npm-publish
 
 # run when a tag is pushed or kick off manually
 on:
