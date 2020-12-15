@@ -1,4 +1,4 @@
-# jambonz-db-helpers ![Build Status](https://github.com/jambonz/jambonz-db-helpers/workflows/CI/badge.svg)
+# jambonz-db-helpers ![CI](https://github.com/jambonz/db-helpers/workflows/CI/badge.svg)
 
 
 A set of helper functions to access data in the [jambones database](https://github.com/jambonz/jambones-api-server/blob/master/db/jambones-sql.sql).
