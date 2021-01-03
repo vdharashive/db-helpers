@@ -26,6 +26,7 @@ module.exports = function(mysqlConfig, logger) {
     lookupAllTeamsFQDNs: require('./lib/lookup-all-teams-fqdns').bind(null, pool, logger),
     lookupTeamsByAccount: require('./lib/lookup-teams-by-account').bind(null, pool, logger),
     lookupAllVoipCarriers: require('./lib/lookup-all-voip-carriers').bind(null, pool, logger),
+    lookupCarrierBySid: require('./lib/lookup-carrier-by-sid').bind(null, pool, logger),
     lookupSipGatewaysByCarrier: require('./lib/lookup-sip-gateways-by-carrier').bind(null, pool, logger)
   };
 };

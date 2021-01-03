@@ -8,12 +8,15 @@ process.on('unhandledRejection', (reason, p) => {
 
 test('voip_carriers tests', async(t) => {
   const fn = require('..');
-  const {lookupAllVoipCarriers} = fn(mysqlOpts);
+  const {lookupAllVoipCarriers, lookupCarrierBySid} = fn(mysqlOpts);
   try {
     let carriers = await lookupAllVoipCarriers();
     //console.log(`carriers: ${JSON.stringify(carriers)}`);
     t.ok(carriers[0].register_username === 'janedoe', 'retrieves voip_carriers');
 
+    let carrier = await lookupCarrierBySid('287c1452-620d-4195-9f19-c9814ef90d78');
+    t.ok(carrier && carrier.name === 'westco', 'retrieves voip_carrier by sid');
+  
     t.end();
   }
   catch (err) {
