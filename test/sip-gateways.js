@@ -8,7 +8,11 @@ process.on('unhandledRejection', (reason, p) => {
 
 test('sip gateways tests', async(t) => {
   const fn = require('..');
-  const {lookupSipGatewayBySignalingAddress, lookupSipGatewaysByCarrier} = fn(mysqlOpts);
+  const {
+    lookupSipGatewayBySignalingAddress,
+    lookupSipGatewaysByCarrier,
+    lookupSipGatewayBySid
+  } = fn(mysqlOpts);
   try {
     let gateways = await lookupSipGatewaysByCarrier('287c1452-620d-4195-9f19-c9814ef90d78');
     t.ok(gateways.length === 2 && gateways[1].port === 5062, 'retrieves sip gateways for a voip carrier');
@@ -25,6 +29,9 @@ test('sip gateways tests', async(t) => {
     gateway = await lookupSipGatewayBySignalingAddress('3.3.3.4', 5062);
     //console.log(`gateway: ${JSON.stringify(gateway)}`);
     t.ok(gateway === null, 'returns null when gateway not found');
+
+    gateway = await lookupSipGatewayBySid('efbc4830-57cd-4c78-a56f-d64fdf210fe8');
+    t.ok(!!gateway, 'looks up gateway by sid');
 
     t.end();
   }
