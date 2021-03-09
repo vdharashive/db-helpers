@@ -21,6 +21,8 @@ insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, inbound, outb
 values ('124a5339-c62c-4075-9e19-f4de70a96597', '287c1452-620d-4195-9f19-c9814ef90d78', '3.3.3.3', true, true);
 insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, port, inbound, outbound) 
 values ('efbc4830-57cd-4c78-a56f-d64fdf210fe8', '287c1452-620d-4195-9f19-c9814ef90d78', '3.3.3.3', 5062, false, true);
+insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, inbound, outbound)
+values ('1e674a9a-763d-4247-8a54-b7a56ab6b605', '287c1452-620d-4195-9f19-c9814ef90d78', '3.3.3.4/31', true, false);
 
 insert into lcr_routes (lcr_route_sid, regex, priority) values ('850e14dd-a641-477f-8000-5a0573208fc2', '^44', 1);
 insert into lcr_routes (lcr_route_sid, regex, priority) values ('13d952da-563a-45a5-99d5-2f4c928bfb39', '^1', 2);
