@@ -1,5 +1,5 @@
-const test = require('tape').test ;
-const exec = require('child_process').exec ;
+const test = require('tape').test;
+const exec = require('child_process').exec;
 
 test('stopping docker network..', (t) => {
   t.timeoutAfter(10000);
@@ -7,6 +7,6 @@ test('stopping docker network..', (t) => {
     //console.log(`stderr: ${stderr}`);
     process.exit(0);
   });
-  t.end() ;
+  t.end();
 });
 
