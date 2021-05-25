@@ -7,15 +7,15 @@ insert into service_providers (service_provider_sid, name, root_domain, registra
 values ('a79d3ade-e0da-4461-80f3-7c73f01e18b4', 'SP B', 'example.com','6c6a4deb-a0f3-4c22-aa1b-e95a009ad540');
 insert into service_providers (service_provider_sid, name, root_domain, registration_hook_sid) 
 values ('7e306626-4ee9-471b-af8d-27d9f6042fc9', 'SP C', 'drachtio.org','6c6a4deb-a0f3-4c22-aa1b-e95a009ad540');
-insert into accounts (account_sid, name, service_provider_sid)
-values ('ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 'Account A1', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0');
-insert into accounts (account_sid, name, service_provider_sid, sip_realm, registration_hook_sid)
-values ('5f190a4f-b997-4f04-b56e-03c627ea547d', 'Account A2', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'customerA.mycompany.com', '6c6a4deb-a0f3-4c22-aa1b-e95a009ad540');
+insert into accounts (account_sid, name, service_provider_sid, webhook_secret)
+values ('ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 'Account A1', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 's');
+insert into accounts (account_sid, name, service_provider_sid, sip_realm, registration_hook_sid, webhook_secret)
+values ('5f190a4f-b997-4f04-b56e-03c627ea547d', 'Account A2', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'customerA.mycompany.com', '6c6a4deb-a0f3-4c22-aa1b-e95a009ad540', 's');
 
-insert into voip_carriers (voip_carrier_sid, name, e164_leading_plus) values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco', 1);
-insert into voip_carriers (voip_carrier_sid, name) values ('ceafc86d-11f3-4dbd-9523-1e0f4502bfc7', 'eastco');
-insert into voip_carriers (voip_carrier_sid, name) values ('64035d77-f735-4b19-9dc1-15f8cf44636c', 'southco');
-insert into voip_carriers (voip_carrier_sid, name) values ('53128ee1-a5f9-4542-8129-c6b1292728ec', 'northco');
+insert into voip_carriers (voip_carrier_sid, name, account_sid, e164_leading_plus) values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 1);
+insert into voip_carriers (voip_carrier_sid, name, account_sid) values ('ceafc86d-11f3-4dbd-9523-1e0f4502bfc7', 'eastco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
+insert into voip_carriers (voip_carrier_sid, name, account_sid) values ('64035d77-f735-4b19-9dc1-15f8cf44636c', 'southco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
+insert into voip_carriers (voip_carrier_sid, name, account_sid) values ('53128ee1-a5f9-4542-8129-c6b1292728ec', 'northco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
 
 -- westco gateways
 insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, inbound, outbound) 

@@ -10,13 +10,13 @@ values ('7e306626-4ee9-471b-af8d-27d9f6042fc9', 'SP C', 'drachtio.org','6c6a4deb
 
 insert into webhooks(webhook_sid, url) values('4ff0c800-a4a2-4f66-a008-ac57dfb8f60f', 'http://example.com/accountreg');
 
-insert into accounts (account_sid, name, service_provider_sid, sip_realm)
-values ('ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 'Account A1', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'sip.drachtio.org');
-insert into accounts (account_sid, name, service_provider_sid, sip_realm, registration_hook_sid)
-values ('5f190a4f-b997-4f04-b56e-03c627ea547d', 'Account A2', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'customerA.mycompany.com', '4ff0c800-a4a2-4f66-a008-ac57dfb8f60f');
+insert into accounts (account_sid, name, service_provider_sid, sip_realm, webhook_secret)
+values ('ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 'Account A1', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'sip.drachtio.org', 'secret');
+insert into accounts (account_sid, name, service_provider_sid, sip_realm, registration_hook_sid, webhook_secret)
+values ('5f190a4f-b997-4f04-b56e-03c627ea547d', 'Account A2', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'customerA.mycompany.com', '4ff0c800-a4a2-4f66-a008-ac57dfb8f60f', 'secret');
 
-insert into voip_carriers (voip_carrier_sid, name, e164_leading_plus, requires_register, register_username, register_sip_realm, register_password) 
-values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco', 1, 1, 'janedoe', 'mydomain.com', 'test123');
+insert into voip_carriers (voip_carrier_sid, name, account_sid, service_provider_sid, e164_leading_plus, requires_register, register_username, register_sip_realm, register_password) 
+values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8', null, 1, 1, 'janedoe', 'mydomain.com', 'test123');
 insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, inbound, outbound) 
 values ('124a5339-c62c-4075-9e19-f4de70a96597', '287c1452-620d-4195-9f19-c9814ef90d78', '3.3.3.3', true, true);
 insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, port, inbound, outbound) 
@@ -30,8 +30,8 @@ insert into lcr_routes (lcr_route_sid, regex, priority) values ('13d952da-563a-4
 insert into lcr_carrier_set_entry (lcr_carrier_set_entry_sid, lcr_route_sid, priority, voip_carrier_sid)
 values ('b015ae6a-b506-454e-80c1-c68c4b43d934', '850e14dd-a641-477f-8000-5a0573208fc2', 1, '287c1452-620d-4195-9f19-c9814ef90d78');
 
-insert into accounts (account_sid, name, service_provider_sid) 
-values('422affb5-4d1e-45e8-b2a4-2623f08b95ef', 'test', '7e306626-4ee9-471b-af8d-27d9f6042fc9');
+insert into accounts (account_sid, name, service_provider_sid, webhook_secret) 
+values('422affb5-4d1e-45e8-b2a4-2623f08b95ef', 'test', '7e306626-4ee9-471b-af8d-27d9f6042fc9', 'secret');
 
 insert into webhooks(webhook_sid, url) values('90dda62e-0ea2-47d1-8164-5bd49003476c', 'http://example.com');
 insert into webhooks(webhook_sid, url) values('4d7ce0aa-5ead-4e61-9a6b-3daa732218b1', 'http://example.com/status');

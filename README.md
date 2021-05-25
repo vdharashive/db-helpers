@@ -21,7 +21,7 @@ const {lookupAuthHook} = require('jambonz-db-helpers')(mySqlOpts, logger);
 
 - [lookupAuthHook](#lookupAuthHook) - retrieves the http authentication callback for a given sip realm/domain
 - [lookupSipGatewayBySignalingAddress](#lookupSipGatewayBySignalingAddress) - retrieves the sip gateway associated with a given ipv4 dot-decimal address and sip port
-- [performLcr](#performLcr) - given a called number returns a preference-ordered list of carriers to use to complete the call
+- [performLcr](#performLcr) - given a called number and an account_sid returns a preference-ordered list of carriers to use to complete the call
 
 #### lookupAuthHook
 `lookupAuthHook(sip_realm) returns Promise`

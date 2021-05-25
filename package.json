@@ -1,10 +1,10 @@
 {
   "name": "@jambonz/db-helpers",
-  "version": "0.5.20",
+  "version": "0.6.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test node test/ | ./node_modules/.bin/tap-spec",
+    "test": "NODE_ENV=test node test/ ",
     "coverage": "./node_modules/.bin/nyc --reporter html --report-dir ./coverage npm run test",
     "jslint": "eslint index.js lib"
   },
@@ -25,11 +25,10 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "config": "^3.3.3",
-    "eslint": "^7.17.0",
-    "eslint-plugin-promise": "^4.2.1",
+    "config": "^3.3.6",
+    "eslint": "^7.27.0",
+    "eslint-plugin-promise": "^5.1.0",
     "nyc": "^15.1.0",
-    "tap-spec": "^5.0.0",
-    "tape": "^5.1.0"
+    "tape": "^5.2.2"
   }
 }
