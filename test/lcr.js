@@ -10,7 +10,7 @@ process.on('unhandledRejection', (reason, p) => {
 
 test('lcr tests', async(t) => {
   const fn = require('..');
-  const {performLcr} = fn(mysqlOpts);
+  const {performLcr, lookupSmppGateways} = fn(mysqlOpts);
   try {
     let gateways = await performLcr('4412838238238', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
@@ -44,6 +44,9 @@ test('lcr tests', async(t) => {
     gateways = await performLcr('4412838238238', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
     t.ok(gateways.length === 8 && gateways[7].uri === 'sip:4412838238238@10.10.10.10', 'handles multiple carriers');
+
+    const r = await lookupSmppGateways(null, 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
+    //console.log(r);
 
     t.end();
   }
