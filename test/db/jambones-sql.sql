@@ -284,6 +284,8 @@ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 smpp_system_id VARCHAR(255),
 smpp_password VARCHAR(64),
 smpp_enquire_link_interval INTEGER NOT NULL DEFAULT 0,
+smpp_inbound_system_id VARCHAR(255),
+smpp_inbound_password VARCHAR(64),
 PRIMARY KEY (voip_carrier_sid)
 ) COMMENT='A Carrier or customer PBX that can send or receive calls';
 
@@ -336,7 +338,10 @@ CREATE TABLE smpp_gateways
 smpp_gateway_sid CHAR(36) NOT NULL UNIQUE ,
 ipv4 VARCHAR(128) NOT NULL,
 port INTEGER NOT NULL DEFAULT 2775,
+netmask INTEGER NOT NULL DEFAULT 32,
 is_primary BOOLEAN NOT NULL DEFAULT 1,
+inbound BOOLEAN NOT NULL DEFAULT 0 COMMENT 'if true, whitelist this IP to allow inbound calls from the gateway',
+outbound BOOLEAN NOT NULL DEFAULT 1 COMMENT 'if true, include in least-cost routing when placing calls to the PSTN',
 use_tls BOOLEAN DEFAULT 0,
 voip_carrier_sid CHAR(36) NOT NULL,
 PRIMARY KEY (smpp_gateway_sid)
