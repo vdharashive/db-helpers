@@ -32,6 +32,6 @@ module.exports = function(mysqlConfig, logger) {
     lookupCarrierBySid: require('./lib/lookup-carrier-by-sid').bind(null, pool, logger),
     lookupSipGatewayBySid: require('./lib/lookup-sip-gateway-by-sid').bind(null, pool, logger),
     lookupSipGatewaysByCarrier: require('./lib/lookup-sip-gateways-by-carrier').bind(null, pool, logger),
-    lookupSmppGateways: require('./lib/lookup-smpp-mc').bind(null, pool, logger)
+    lookupSmppGateways: require('./lib/lookup-smpp-gateways').bind(null, pool, logger)
   };
 };
