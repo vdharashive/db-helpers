@@ -45,7 +45,8 @@ test('lcr tests', async(t) => {
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
     t.ok(gateways.length === 8 && gateways[7].uri === 'sip:4412838238238@10.10.10.10', 'handles multiple carriers');
 
-    const r = await lookupSmppGateways(null, 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
+    const r = await lookupSmppGateways('ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
+    t.ok(r.length === 2, 'returns 2 smpp gateways')
     //console.log(r);
 
     t.end();
