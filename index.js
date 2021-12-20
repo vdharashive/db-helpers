@@ -17,6 +17,7 @@ module.exports = function(mysqlConfig, logger) {
       require('./lib/lookup-sip-gateway-by-signaling-address').bind(null, pool, logger),
     performLcr: require('./lib/perform-lcr').bind(null, pool, logger),
     lookupAppByPhoneNumber: require('./lib/lookup-app-by-phone-number').bind(null, pool, logger),
+    lookupAppByRegex: require('./lib/lookup-app-by-regex').bind(null, pool, logger),
     lookupAppBySid: require('./lib/lookup-app-by-sid').bind(null, pool, logger),
     lookupAppByRealm: require('./lib/lookup-app-by-realm').bind(null, pool, logger),
     lookupAppByTeamsTenant: require('./lib/lookup-app-by-teams-tenant').bind(null, pool, logger),
