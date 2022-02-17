@@ -1,12 +1,13 @@
 {
   "name": "@jambonz/db-helpers",
-  "version": "0.6.16",
+  "version": "0.6.17",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test node test/ ",
     "coverage": "./node_modules/.bin/nyc --reporter html --report-dir ./coverage npm run test",
-    "jslint": "eslint index.js lib"
+    "jslint": "eslint index.js lib",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "eslint": "^7.27.0",
     "eslint-plugin-promise": "^5.1.0",
     "nyc": "^15.1.0",
-    "tape": "^5.2.2"
+    "tape": "^5.2.2",
+    "husky": "^7.0.0"
   }
 }
