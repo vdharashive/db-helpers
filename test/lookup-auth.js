@@ -15,6 +15,10 @@ test('lookup auth hook tests', async(t) => {
     t.ok(result.url === 'http://example.com/accountreg', 'looks up auth hook at account level');
     result = await lookupAuthHook('subdomain.example.com');
     t.ok(result.url === 'http://example.com/spreg', 'looks up auth hook at service provider level');
+    result = await lookupAuthHook('customerB.mycompany.com');
+    console.log(`result: ${JSON.stringify(result)}`);
+    t.ok(result.url === 'http://example.com/accountreg', 'looks up auth hook at account level using root domain');    
+    
     result = await lookupAuthHook('subdomain.drachtio.org');
     //console.log(`result: ${JSON.stringify(result)}`);
     t.ok(result.url === 'http://example.com/spreg' && result.username === 'foo', 
