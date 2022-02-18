@@ -14,6 +14,8 @@ insert into accounts (account_sid, name, service_provider_sid, sip_realm, webhoo
 values ('ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 'Account A1', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'sip.drachtio.org', 'secret');
 insert into accounts (account_sid, name, service_provider_sid, sip_realm, registration_hook_sid, webhook_secret)
 values ('5f190a4f-b997-4f04-b56e-03c627ea547d', 'Account A2', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'customerA.mycompany.com', '4ff0c800-a4a2-4f66-a008-ac57dfb8f60f', 'secret');
+insert into accounts (account_sid, name, service_provider_sid, sip_realm, registration_hook_sid, webhook_secret)
+values ('5f200a4f-b997-4f04-b56e-03c627ea547d', 'Account A#', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 'mycompany.com', '4ff0c800-a4a2-4f66-a008-ac57dfb8f60f', 'secret');
 
 insert into voip_carriers (voip_carrier_sid, name, account_sid, service_provider_sid, e164_leading_plus, requires_register, register_username, register_sip_realm, register_password) 
 values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8', null, 1, 1, 'janedoe', 'mydomain.com', 'test123');

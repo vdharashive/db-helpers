@@ -16,6 +16,9 @@ test('account tests', async(t) => {
     account = await lookupAccountBySipRealm('sip.drachtio.org');
     t.ok(account !== null, 'retrieves account by sip realm');
 
+    account = await lookupAccountBySipRealm('mycompany.com');
+    t.ok(account !== null, 'retrieves account by sip root realm');
+
     account = await lookupAccountBySipRealm('voxout.voxbone.com');
     t.ok(account === null, 'returns null for unknown sip realm');
 
