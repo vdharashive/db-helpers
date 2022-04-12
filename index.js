@@ -1,5 +1,18 @@
 const mysql = require('mysql2');
 
+const pingDb = async(pool) => {
+  return new Promise((resolve, reject) => {
+    pool.getConnection((err, conn) => {
+      if (err) return reject(err);
+      conn.ping((err) => {
+        pool.releaseConnection(conn);
+        if (err) return reject(err);
+        resolve();
+      });
+    });
+  });
+};
+
 module.exports = function(mysqlConfig, logger) {
   const pool = mysql.createPool(mysqlConfig);
   logger = logger || {info: () => {}, error: () => {}, debug: () => {}};
@@ -12,6 +25,7 @@ module.exports = function(mysqlConfig, logger) {
 
   return {
     pool,
+    ping: pingDb.bind(null, pool),
     lookupAuthHook: require('./lib/lookup-auth-hook').bind(null, pool, logger),
     lookupSipGatewayBySignalingAddress:
       require('./lib/lookup-sip-gateway-by-signaling-address').bind(null, pool, logger),

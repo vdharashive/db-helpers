@@ -1,5 +1,6 @@
 require('./docker_start');
 require('./create-test-db');
+require('./ping');
 require('./voip-carriers');
 require('./account');
 require('./teams');
