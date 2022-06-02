@@ -7,6 +7,7 @@ require('./teams');
 require('./lookup-auth');
 require('./sip-gateways');
 require('./app');
+require('./cache');
 require('./lcr');
 require('./add-sbc-address');
 require('./docker_stop');
