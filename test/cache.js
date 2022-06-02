@@ -19,7 +19,7 @@ test('cache tests', async(t) => {
   });
 
   const fn = require('..');
-  const {pool, lookupCarrierBySid, lookupAppByPhoneNumber} = fn(mysqlOpts);
+  const {pool} = fn(mysqlOpts);
 
   const spies = {
     execute: sinon.spy(),
