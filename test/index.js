@@ -1,4 +1,4 @@
-// require('./docker_start');
+require('./docker_start');
 require('./create-test-db');
 require('./ping');
 require('./voip-carriers');
@@ -10,4 +10,4 @@ require('./app');
 require('./cache');
 require('./lcr');
 require('./add-sbc-address');
-// require('./docker_stop');
+require('./docker_stop');
