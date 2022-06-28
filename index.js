@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-const cachify = require('./lib/cachify-pool');
+const cacheActivator = require('./lib/cache-activator');
 
 const pingDb = async(pool) => {
   return new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ module.exports = function(mysqlConfig, logger) {
   const pool = mysql.createPool(mysqlConfig);
 
   if (process.env.JAMBONES_MYSQL_REFRESH_TTL)
-    cachify(pool);
+    cacheActivator.activate(pool);
 
   logger = logger || {info: () => {}, error: () => {}, debug: () => {}};
   pool.getConnection((err, conn) => {

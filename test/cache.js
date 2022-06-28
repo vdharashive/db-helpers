@@ -1,22 +1,41 @@
 const test = require('tape').test;
 const sinon = require('sinon');
+const FakeTimers = require("@sinonjs/fake-timers");
 const config = require('config');
-const cachify = require('../lib/cachify-pool');
+const {cache} = require('../lib/cache-manager');
+const cacheActivator = require('../lib/cache-activator');
 const mysqlOpts = config.get('mysql');
 
 process.on('unhandledRejection', (reason, p) => {
   console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
 });
 
+
+
 let clock;
 
 test('cache tests', async(t) => {
-  clock = sinon.useFakeTimers();
+  // t.timeoutAfter(200000000);
 
-  t.teardown(function () {
-    delete process.env.JAMBONES_MYSQL_REFRESH_TTL;
-    clock.restore();
-  });
+  const context = {
+    clearTimeout,
+    setTimeout // By default context.setTimeout uses the global setTimeout
+  };
+
+  function sleep(delay) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, delay);
+    });
+  }
+
+  // clock = FakeTimers.withGlobal(context).install();
+  clock = FakeTimers.install();
+
+  // clock = sinon.useFakeTimers({
+  //   now: Date.now(),
+  //   shouldAdvanceTime: true,
+  //   toFake: ['setTimeout']
+  // });
 
   const fn = require('..');
   const {pool} = fn(mysqlOpts);
@@ -41,7 +60,12 @@ test('cache tests', async(t) => {
   }
 
   process.env.JAMBONES_MYSQL_REFRESH_TTL = '30';
-  cachify(pool);
+  cacheActivator.activate(pool);
+
+  t.teardown(function () {
+    clock.uninstall();
+    cacheActivator.deactivate(pool);
+  });
 
   let executeFixture;
   let queryFixture;
@@ -81,27 +105,44 @@ test('cache tests', async(t) => {
 
     t.ok(spies.execute.calledOnce && spies.query.calledOnce, 'calls database only 1 / 1000');
 
-    clock.tick(25000);
+    await clock.tickAsync(25000);
 
     await execute1000();
     await query1000();
 
     t.ok(spies.execute.calledOnce && spies.query.calledOnce, 'remains in cache after 25sec');
 
-    clock.tick(5000);
+    await clock.tickAsync(5000);
+
+    t.ok(spies.execute.calledTwice && spies.query.calledTwice, 'background refreshes from db and caches again after TTL 30sec');
+    t.ok(allCachedMatchOriginal, 'all cached results match db originals');
+
+    await clock.tickAsync(10000);
 
     await execute1000();
     await query1000();
 
-    t.ok(spies.execute.calledTwice && spies.query.calledTwice, 'refreshes from db and caches again after 30sec');
-    t.ok(allCachedMatchOriginal, 'all cached results match db originals');
+    t.ok(spies.execute.calledTwice && spies.query.calledTwice, 'remains in cache before next TTL 30sec');
+
+
+
+    await clock.tickAsync(140000);
+
+    // console.log(new Date().toISOString(), cache);
+
+
+    // await sleep(10000);
+
+    // await clock.runAllAsync();
+
+    t.ok(Object.keys(cache).length === 0, 'cache items purged if not accessed within TTL 30sec');
+
+
 
     t.end();
   }
   catch (err) {
     t.end(err);
   }
-
-  delete process.env.JAMBONES_MYSQL_REFRESH_TTL;
 });
 
