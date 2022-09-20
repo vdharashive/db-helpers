@@ -50,6 +50,7 @@ module.exports = function(mysqlConfig, logger) {
     lookupSmppGatewayBySid: require('./lib/lookup-smpp-gateway-by-sid').bind(null, pool, logger),
     lookupSmppGateways: require('./lib/lookup-smpp-gateways').bind(null, pool, logger),
     lookupSmppGatewaysByBindCredentials:
-      require('./lib/lookup-smpp-gateways-by-bind-credentials').bind(null, pool, logger)
+      require('./lib/lookup-smpp-gateways-by-bind-credentials').bind(null, pool, logger),
+    queryCallLimits: require('./lib/query-call-limits').bind(null, pool, logger)
   };
 };
