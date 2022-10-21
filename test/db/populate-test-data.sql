@@ -7,6 +7,7 @@ insert into service_providers (service_provider_sid, name, root_domain, registra
 values ('a79d3ade-e0da-4461-80f3-7c73f01e18b4', 'SP B', 'example.com','6c6a4deb-a0f3-4c22-aa1b-e95a009ad540');
 insert into service_providers (service_provider_sid, name, root_domain, registration_hook_sid, ms_teams_fqdn) 
 values ('7e306626-4ee9-471b-af8d-27d9f6042fc9', 'SP C', 'drachtio.org','6c6a4deb-a0f3-4c22-aa1b-e95a009ad540', 'customers.drachtio.org');
+insert into service_provider_limits (service_provider_limits_sid, service_provider_sid, category, quantity) VALUES ('a79d3ade-e0da-4461-80f3-7c73f01e18b4', '7e306626-4ee9-471b-af8d-27d9f6042fc9', 'voice_call_session', 100);
 
 insert into webhooks(webhook_sid, url) values('4ff0c800-a4a2-4f66-a008-ac57dfb8f60f', 'http://example.com/accountreg');
 
@@ -34,6 +35,7 @@ values ('b015ae6a-b506-454e-80c1-c68c4b43d934', '850e14dd-a641-477f-8000-5a05732
 
 insert into accounts (account_sid, name, service_provider_sid, webhook_secret) 
 values('422affb5-4d1e-45e8-b2a4-2623f08b95ef', 'test', '7e306626-4ee9-471b-af8d-27d9f6042fc9', 'secret');
+insert into account_limits(account_limits_sid, account_sid, category, quantity) values('a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d', '422affb5-4d1e-45e8-b2a4-2623f08b95ef', 'voice_call_session', 10);
 
 insert into webhooks(webhook_sid, url) values('90dda62e-0ea2-47d1-8164-5bd49003476c', 'http://example.com');
 insert into webhooks(webhook_sid, url) values('4d7ce0aa-5ead-4e61-9a6b-3daa732218b1', 'http://example.com/status');
