@@ -11,31 +11,10 @@ process.on('unhandledRejection', (reason, p) => {
 });
 
 
-
 let clock;
 
 test('cache tests', async(t) => {
-  // t.timeoutAfter(200000000);
-
-  const context = {
-    clearTimeout,
-    setTimeout // By default context.setTimeout uses the global setTimeout
-  };
-
-  function sleep(delay) {
-    return new Promise(function (resolve) {
-      setTimeout(resolve, delay);
-    });
-  }
-
-  // clock = FakeTimers.withGlobal(context).install();
   clock = FakeTimers.install();
-
-  // clock = sinon.useFakeTimers({
-  //   now: Date.now(),
-  //   shouldAdvanceTime: true,
-  //   toFake: ['setTimeout']
-  // });
 
   const fn = require('..');
   const {pool} = fn(mysqlOpts);
@@ -124,20 +103,11 @@ test('cache tests', async(t) => {
 
     t.ok(spies.execute.calledTwice && spies.query.calledTwice, 'remains in cache before next TTL 30sec');
 
-
-
-    await clock.tickAsync(140000);
-
-    // console.log(new Date().toISOString(), cache);
-
-
-    // await sleep(10000);
-
-    // await clock.runAllAsync();
+    for (let i = 0; i < 2000; i++) {
+      await clock.tickAsync(25);
+    }
 
     t.ok(Object.keys(cache).length === 0, 'cache items purged if not accessed within TTL 30sec');
-
-
 
     t.end();
   }
