@@ -67,7 +67,10 @@ test('cache tests', async(t) => {
   async function query1000() {
     for (let i = 0; i < 1000; i++) {
       const pp = pool.promise();
-      const [r] = await pp.query('SELECT application_sid from voip_carriers where voip_carrier_sid = ?', '3b43e39f-4346-4218-8434-a53130e8be49');
+      const [r] = await pp.query(
+        {sql: 'SELECT application_sid from voip_carriers where voip_carrier_sid = ?'}, 
+        '3b43e39f-4346-4218-8434-a53130e8be49'
+      );
 
       if (!queryFixture) {
         queryFixture = JSON.stringify(r[0]);
