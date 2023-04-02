@@ -8,7 +8,7 @@ process.on('unhandledRejection', (reason, p) => {
 
 test('voip_carriers tests', async(t) => {
   const fn = require('..');
-  const {lookupAllVoipCarriers, lookupCarrierBySid} = fn(mysqlOpts);
+  const {lookupAllVoipCarriers, lookupCarrierBySid, updateVoipCarriersRegisterStatus} = fn(mysqlOpts);
   try {
     let carriers = await lookupAllVoipCarriers();
     //console.log(`carriers: ${JSON.stringify(carriers)}`);
@@ -16,6 +16,16 @@ test('voip_carriers tests', async(t) => {
 
     let carrier = await lookupCarrierBySid('287c1452-620d-4195-9f19-c9814ef90d78');
     t.ok(carrier && carrier.name === 'westco', 'retrieves voip_carrier by sid');
+
+    const obj = {
+      status: 'fail',
+      reason: '408 request timeout'
+    }
+
+    await updateVoipCarriersRegisterStatus('287c1452-620d-4195-9f19-c9814ef90d78', obj);
+    carrier = await lookupCarrierBySid('287c1452-620d-4195-9f19-c9814ef90d78');
+    const ret = JSON.parse(carrier.register_status)
+    t.ok(ret && ret.status === 'fail' && ret.reason === '408 request timeout', 'retrieves voip_carrier.register_status by sid');
   
     t.end();
   }
