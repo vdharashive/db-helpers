@@ -249,7 +249,7 @@ sbc_address_sid CHAR(36) NOT NULL UNIQUE ,
 ipv4 VARCHAR(255) NOT NULL,
 port INTEGER NOT NULL DEFAULT 5060,
 service_provider_sid CHAR(36),
-last_updated TIMESTAMP NULL  DEFAULT NULL,
+last_updated DATETIME,
 PRIMARY KEY (sbc_address_sid)
 );
 
@@ -358,7 +358,7 @@ smpp_inbound_password VARCHAR(64),
 register_from_user VARCHAR(128),
 register_from_domain VARCHAR(255),
 register_public_ip_in_contact BOOLEAN NOT NULL DEFAULT false,
-register_status VARCHAR(1024),
+register_status VARCHAR(4096),
 PRIMARY KEY (voip_carrier_sid)
 ) COMMENT='A Carrier or customer PBX that can send or receive calls';
 
