@@ -20,12 +20,12 @@ test('add sbc address tests', async(t) => {
     const readd = await lookUpSbcAddressesbyIpv4('3.3.3.3')
     t.ok(readd[0].last_updated > first[0].last_updated, "last_updated is updated");
 
-    process.env.SBC_ADDRESSES_CLEANUP_INTERVAL_IN_SECOND = 1;
+    process.env.DEAD_SBC_IN_SECOND = 1;
     await new Promise(resolve => setTimeout(resolve, 2000));
     await cleanSbcAddresses();
     const cleanSbc = await lookUpSbcAddressesbyIpv4('3.3.3.3');
     t.ok(cleanSbc.length == 0, "Successfully clean up SBC address");
-    process.env.SBC_ADDRESSES_CLEANUP_INTERVAL_IN_SECOND = null;
+    process.env.DEAD_SBC_IN_SECOND = null;
 
     await addSmppAddress('3.3.3.3');
     t.pass('added smpp address');
