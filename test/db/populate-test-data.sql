@@ -27,11 +27,18 @@ values ('efbc4830-57cd-4c78-a56f-d64fdf210fe8', '287c1452-620d-4195-9f19-c9814ef
 insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, inbound, outbound)
 values ('1e674a9a-763d-4247-8a54-b7a56ab6b605', '287c1452-620d-4195-9f19-c9814ef90d78', '3.3.3.4/31', true, false);
 
-insert into lcr_routes (lcr_route_sid, regex, priority) values ('850e14dd-a641-477f-8000-5a0573208fc2', '^44', 1);
-insert into lcr_routes (lcr_route_sid, regex, priority) values ('13d952da-563a-45a5-99d5-2f4c928bfb39', '^1', 2);
+insert into lcr (lcr_sid, name, is_active, account_sid ) values ('4a968442-3d40-4704-83ae-b28f9b4f91d3', 'Test 1', 1, 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
+insert into lcr (lcr_sid, name, is_active, service_provider_sid ) values ('4a968442-3d40-4704-83ae-b28f9b4f91d4', 'Test 2', 1, '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0');
+
+insert into lcr_routes (lcr_route_sid, lcr_sid, regex, priority) values ('850e14dd-a641-477f-8000-5a0573208fc2', '4a968442-3d40-4704-83ae-b28f9b4f91d3', '^44', 1);
+insert into lcr_routes (lcr_route_sid, lcr_sid, regex, priority) values ('13d952da-563a-45a5-99d5-2f4c928bfb39', '4a968442-3d40-4704-83ae-b28f9b4f91d3', '^1', 2);
+insert into lcr_routes (lcr_route_sid, lcr_sid, regex, priority) values ('850e14dd-a641-477f-8000-5a0573208fc3', '4a968442-3d40-4704-83ae-b28f9b4f91d4', '^33', 1);
+insert into lcr_routes (lcr_route_sid, lcr_sid, regex, priority) values ('13d952da-563a-45a5-99d5-2f4c928bfb38', '4a968442-3d40-4704-83ae-b28f9b4f91d4', '^22', 2);
 
 insert into lcr_carrier_set_entry (lcr_carrier_set_entry_sid, lcr_route_sid, priority, voip_carrier_sid)
 values ('b015ae6a-b506-454e-80c1-c68c4b43d934', '850e14dd-a641-477f-8000-5a0573208fc2', 1, '287c1452-620d-4195-9f19-c9814ef90d78');
+insert into lcr_carrier_set_entry (lcr_carrier_set_entry_sid, lcr_route_sid, priority, voip_carrier_sid)
+values ('b015ae6a-b506-454e-80c1-c68c4b43d935', '850e14dd-a641-477f-8000-5a0573208fc3', 1, '287c1452-620d-4195-9f19-c9814ef90d78');
 
 insert into accounts (account_sid, name, service_provider_sid, webhook_secret) 
 values('422affb5-4d1e-45e8-b2a4-2623f08b95ef', 'test', '7e306626-4ee9-471b-af8d-27d9f6042fc9', 'secret');
