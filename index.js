@@ -59,6 +59,7 @@ module.exports = function(mysqlConfig, logger) {
     lookupSmppGatewaysByBindCredentials:
       require('./lib/lookup-smpp-gateways-by-bind-credentials').bind(null, pool, logger),
     queryCallLimits: require('./lib/query-call-limits').bind(null, pool, logger),
-    updateVoipCarriersRegisterStatus: require('./lib/update-carrier-register-status-by-sid').bind(null, pool, logger)
+    updateVoipCarriersRegisterStatus: require('./lib/update-carrier-register-status-by-sid').bind(null, pool, logger),
+    lookupCarrierByAccountLcr: require('./lib/lookup-carrier-by-account-lcr').bind(null, pool, logger)
   };
 };
