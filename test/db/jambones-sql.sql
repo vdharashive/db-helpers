@@ -54,6 +54,8 @@ DROP TABLE IF EXISTS smpp_addresses;
 
 DROP TABLE IF EXISTS speech_credentials;
 
+DROP TABLE IF EXISTS system_information;
+
 DROP TABLE IF EXISTS users;
 
 DROP TABLE IF EXISTS smpp_gateways;
@@ -138,9 +140,10 @@ PRIMARY KEY (dns_record_sid)
 CREATE TABLE lcr_routes
 (
 lcr_route_sid CHAR(36),
+lcr_sid CHAR(36) NOT NULL,
 regex VARCHAR(32) NOT NULL COMMENT 'regex-based pattern match against dialed number, used for LCR routing of PSTN calls',
 description VARCHAR(1024),
-priority INTEGER NOT NULL UNIQUE  COMMENT 'lower priority routes are attempted first',
+priority INTEGER NOT NULL COMMENT 'lower priority routes are attempted first',
 PRIMARY KEY (lcr_route_sid)
 ) COMMENT='An ordered list of  digit patterns in an LCR table.  The pat';
 
@@ -261,6 +264,8 @@ CREATE TABLE sbc_addresses
 sbc_address_sid CHAR(36) NOT NULL UNIQUE ,
 ipv4 VARCHAR(255) NOT NULL,
 port INTEGER NOT NULL DEFAULT 5060,
+tls_port INTEGER,
+wss_port INTEGER,
 service_provider_sid CHAR(36),
 last_updated DATETIME,
 PRIMARY KEY (sbc_address_sid)
@@ -319,6 +324,13 @@ tts_tested_ok BOOLEAN,
 stt_tested_ok BOOLEAN,
 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (speech_credential_sid)
+);
+
+CREATE TABLE system_information
+(
+domain_name VARCHAR(255),
+sip_domain_name VARCHAR(255),
+monitoring_domain_name VARCHAR(255)
 );
 
 CREATE TABLE users
@@ -517,8 +529,6 @@ ALTER TABLE call_routes ADD FOREIGN KEY application_sid_idxfk (application_sid) 
 CREATE INDEX dns_record_sid_idx ON dns_records (dns_record_sid);
 ALTER TABLE dns_records ADD FOREIGN KEY account_sid_idxfk_4 (account_sid) REFERENCES accounts (account_sid);
 
-ALTER TABLE lcr_routes DROP INDEX priority;
-ALTER TABLE lcr_routes ADD lcr_sid VARCHAR(36) AFTER lcr_route_sid;
 CREATE INDEX lcr_sid_idx ON lcr_routes (lcr_sid);
 ALTER TABLE lcr_routes ADD FOREIGN KEY lcr_sid_idxfk (lcr_sid) REFERENCES lcr (lcr_sid);
 
