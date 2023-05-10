@@ -34,7 +34,6 @@ module.exports = function(mysqlConfig, logger) {
     lookupAuthHook: require('./lib/lookup-auth-hook').bind(null, pool, logger),
     lookupSipGatewayBySignalingAddress:
       require('./lib/lookup-sip-gateway-by-signaling-address').bind(null, pool, logger),
-    performLcr: require('./lib/perform-lcr').bind(null, pool, logger),
     lookupAppByPhoneNumber: require('./lib/lookup-app-by-phone-number').bind(null, pool, logger),
     lookupAppByRegex: require('./lib/lookup-app-by-regex').bind(null, pool, logger),
     lookupAppBySid: require('./lib/lookup-app-by-sid').bind(null, pool, logger),
@@ -60,6 +59,7 @@ module.exports = function(mysqlConfig, logger) {
       require('./lib/lookup-smpp-gateways-by-bind-credentials').bind(null, pool, logger),
     queryCallLimits: require('./lib/query-call-limits').bind(null, pool, logger),
     updateVoipCarriersRegisterStatus: require('./lib/update-carrier-register-status-by-sid').bind(null, pool, logger),
-    lookupCarrierByAccountLcr: require('./lib/lookup-carrier-by-account-lcr').bind(null, pool, logger)
+    lookupCarrierByAccountLcr: require('./lib/lookup-carrier-by-account-lcr').bind(null, pool, logger),
+    lookupOutboundCarrierForAccount: require('./lib/lookup-outbound-carrier-for-account').bind(null, pool, logger),
   };
 };
