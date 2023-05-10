@@ -14,7 +14,7 @@ test('lcr tests', async(t) => {
   try {
     let gateways = await performLcr('4412838238238', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
-    t.ok(gateways[0].uri === 'sip:+4412838238238@3.3.3.3' || gateways[1].uri === 'sip:+4412838238238@3.3.3.3', 
+    t.ok(gateways[0].uri === 'sip:+4412838238238@3.3.3.3;transport=udp' || gateways[1].uri === 'sip:+4412838238238@3.3.3.3;transport=udp', 
       'uses lcr when regex matches');
     gateways = await performLcr('4412838238238', '5f190a4f-b997-4f04-b56e-03c627ea547d');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
@@ -43,7 +43,7 @@ test('lcr tests', async(t) => {
 
     gateways = await performLcr('4412838238238', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
     //console.log(`gateways: ${JSON.stringify(gateways)}`);
-    t.ok(gateways.length === 8 && gateways[7].uri === 'sip:4412838238238@10.10.10.10', 'handles multiple carriers');
+    t.ok(gateways.length === 8 && gateways[7].uri === 'sip:4412838238238@10.10.10.10;transport=udp', 'handles multiple carriers');
 
     let r = await lookupSmppGateways('ee9d7d49-b3e4-4fdb-9d66-661149f717e8');
     t.ok(r.length === 2, 'returns 2 smpp gateways')
