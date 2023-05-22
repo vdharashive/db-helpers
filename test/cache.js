@@ -69,7 +69,7 @@ test('cache tests', async(t) => {
       const pp = pool.promise();
       const [r] = await pp.query(
         {sql: 'SELECT application_sid from voip_carriers where voip_carrier_sid = ?'}, 
-        '3b43e39f-4346-4218-8434-a53130e8be49'
+        ['3b43e39f-4346-4218-8434-a53130e8be49']
       );
 
       if (!queryFixture) {
