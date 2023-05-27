@@ -12,4 +12,5 @@ require('./app');
 require('./cache');
 require('./lcr');
 require('./add-sbc-address');
+require('./add-sbc-address-write-mysql');
 require('./docker_stop');
