@@ -1,6 +1,7 @@
-require('./docker_start');
+// require('./docker_start');
 require('./create-test-db');
 require('./ping');
+require('./clients');
 require('./lookup-lcr');
 require('./query-call-limits');
 require('./voip-carriers');
@@ -13,5 +14,4 @@ require('./cache');
 require('./lcr');
 require('./add-sbc-address');
 require('./add-sbc-address-write-mysql');
-require('./clients');
 require('./docker_stop');
