@@ -40,6 +40,9 @@ values ('b015ae6a-b506-454e-80c1-c68c4b43d934', '850e14dd-a641-477f-8000-5a05732
 insert into lcr_carrier_set_entry (lcr_carrier_set_entry_sid, lcr_route_sid, priority, voip_carrier_sid)
 values ('b015ae6a-b506-454e-80c1-c68c4b43d935', '850e14dd-a641-477f-8000-5a0573208fc3', 1, '287c1452-620d-4195-9f19-c9814ef90d78');
 
+insert into clients(client_sid, account_sid, username, password, is_active) values (
+  '4e98ca2b-f031-49c5-b440-300a0352f443', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8', 'client1', '{"iv":"a54d0b00c9d9014490fa549d755c21c7","content":"815e796e9002ada1f15b0036cff78b1d"}', 1);
+
 insert into accounts (account_sid, name, service_provider_sid, webhook_secret) 
 values('422affb5-4d1e-45e8-b2a4-2623f08b95ef', 'test', '7e306626-4ee9-471b-af8d-27d9f6042fc9', 'secret');
 insert into account_limits(account_limits_sid, account_sid, category, quantity) values('a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d', '422affb5-4d1e-45e8-b2a4-2623f08b95ef', 'voice_call_session', 10);

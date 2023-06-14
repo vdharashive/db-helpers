@@ -1,6 +1,7 @@
 require('./docker_start');
 require('./create-test-db');
 require('./ping');
+require('./clients');
 require('./lookup-lcr');
 require('./query-call-limits');
 require('./voip-carriers');
