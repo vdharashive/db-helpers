@@ -87,5 +87,6 @@ module.exports = function(mysqlConfig, logger, writeMysqlConfig = null)  {
       require('./lib/update-carrier-register-status-by-sid').bind(null, writePool ?? pool, logger),
     lookupCarrierByAccountLcr: require('./lib/lookup-carrier-by-account-lcr').bind(null, pool, logger),
     lookupOutboundCarrierForAccount: require('./lib/lookup-outbound-carrier-for-account').bind(null, pool, logger),
+    lookupClientByAccountAndUsername: require('./lib/lookup-client-by-username-account').bind(null, pool, logger),
   };
 };

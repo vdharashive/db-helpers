@@ -10,5 +10,6 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "127.0.0.1", "--protocol", "tcp"]
+      interval: 10s
       timeout: 10s
       retries: 10
