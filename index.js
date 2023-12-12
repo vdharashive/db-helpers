@@ -76,8 +76,10 @@ module.exports = function(mysqlConfig, logger, writeMysqlConfig = null)  {
     lookupTeamsByAccount: require('./lib/lookup-teams-by-account').bind(null, pool, logger),
     lookupAllVoipCarriers: require('./lib/lookup-all-voip-carriers').bind(null, pool, logger),
     lookupCarrierBySid: require('./lib/lookup-carrier-by-sid').bind(null, pool, logger),
+    lookupSipGatewaysByFilters: require('./lib/lookup-sip-gateways-by-filters').bind(null, pool, logger),
     lookupSipGatewayBySid: require('./lib/lookup-sip-gateway-by-sid').bind(null, pool, logger),
     lookupSipGatewaysByCarrier: require('./lib/lookup-sip-gateways-by-carrier').bind(null, pool, logger),
+    updateSipGatewayBySid: require('./lib/update-sip-gateway-by-sid').bind(null, pool, logger),
     lookupSmppGatewayBySid: require('./lib/lookup-smpp-gateway-by-sid').bind(null, pool, logger),
     lookupSmppGateways: require('./lib/lookup-smpp-gateways').bind(null, pool, logger),
     lookupSmppGatewaysByBindCredentials:

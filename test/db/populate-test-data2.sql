@@ -14,8 +14,8 @@ values ('5f190a4f-b997-4f04-b56e-03c627ea547d', 'Account A2', '3f35518f-5a0d-4c2
 
 insert into voip_carriers (voip_carrier_sid, name, account_sid, service_provider_sid, e164_leading_plus) 
 values ('387c1452-620d-4195-9f19-c9814ef90d78', 'westco2', NULL, '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 1);
-insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, inbound, outbound) 
-values ('88191aa4-fff2-4c64-b005-43414a8e94d7', '387c1452-620d-4195-9f19-c9814ef90d78', '6.6.6.6', true, true);
+insert into sip_gateways (sip_gateway_sid, voip_carrier_sid, ipv4, port, inbound, outbound) 
+values ('88191aa4-fff2-4c64-b005-43414a8e94d7', '387c1452-620d-4195-9f19-c9814ef90d78', '6.6.6.6', 5060, true, true);
 
 insert into voip_carriers (voip_carrier_sid, name, account_sid, service_provider_sid, e164_leading_plus) values ('287c1452-620d-4195-9f19-c9814ef90d78', 'westco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0', 1);
 insert into voip_carriers (voip_carrier_sid, name, account_sid, service_provider_sid) values ('ceafc86d-11f3-4dbd-9523-1e0f4502bfc7', 'eastco', 'ee9d7d49-b3e4-4fdb-9d66-661149f717e8', '3f35518f-5a0d-4c2e-90a5-2407bb3b36f0');

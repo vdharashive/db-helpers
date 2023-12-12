@@ -1,5 +1,6 @@
 const test = require('tape').test ;
 const config = require('config');
+const lookupSipGatewaysByFilters = require('../lib/lookup-sip-gateways-by-filters');
 const mysqlOpts = config.get('mysql');
 
 process.on('unhandledRejection', (reason, p) => {
@@ -11,16 +12,29 @@ test('sip gateways tests', async(t) => {
   const {
     lookupSipGatewayBySignalingAddress,
     lookupSipGatewaysByCarrier,
-    lookupSipGatewayBySid
+    lookupSipGatewayBySid,
+    lookupSipGatewaysByFilters,
+    updateSipGatewayBySid
   } = fn(mysqlOpts);
   try {
     let gateways = await lookupSipGatewaysByCarrier('287c1452-620d-4195-9f19-c9814ef90d78');
     t.ok(gateways.length === 3 && gateways[2].port === 5062, 'retrieves sip gateways for a voip carrier');
     //console.log(gateways);
 
+    gateways = await lookupSipGatewaysByFilters({voip_carrier_sid: '287c1452-620d-4195-9f19-c9814ef90d78'});
+    t.ok(gateways.length === 3 && gateways[2].port === 5062, 'retrieves sip gateways for a voip carrier');
+
     let gateway = await lookupSipGatewayBySignalingAddress('3.3.3.3', 5060);
     //console.log(`gateway: ${JSON.stringify(gateway)}`);
     t.ok(gateway.sip_gateway_sid === '124a5339-c62c-4075-9e19-f4de70a96597', 'retrieves sip gateway with default port');
+    t.ok(gateway.send_options_ping === 0, 'retrieves sip gateway with send_options_ping');
+
+    await updateSipGatewayBySid(gateway.sip_gateway_sid, {send_options_ping: true});
+
+    gateway = await lookupSipGatewayBySignalingAddress('3.3.3.3', 5060);
+    //console.log(`gateway: ${JSON.stringify(gateway)}`);
+    t.ok(gateway.sip_gateway_sid === '124a5339-c62c-4075-9e19-f4de70a96597', 'retrieves sip gateway with default port');
+    t.ok(gateway.send_options_ping === 1, 'retrieves sip gateway with send_options_ping');
 
     gateway = await lookupSipGatewayBySignalingAddress('3.3.3.3', 5062);
     //console.log(`gateway: ${JSON.stringify(gateway)}`);
