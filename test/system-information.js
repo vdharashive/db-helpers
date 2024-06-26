@@ -15,7 +15,7 @@ test('system_information tests', async(t) => {
   try {
     let info = await lookupSystemInformation();
     console.log({info});
-    t.ok(info.length === 1 && info[0].domain_name === 'jambonz.xyz', 'found system information');
+    t.ok(info.domain_name === 'jambonz.xyz', 'found system information');
 
     t.end();
   }
