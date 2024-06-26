@@ -65,3 +65,5 @@ values ('5cd93593-fe66-443c-9ab3-4f52c13c3d28', '15083084809', '287c1452-620d-41
 
 insert into ms_teams_tenants (ms_teams_tenant_sid,service_provider_sid,account_sid,application_sid,tenant_fqdn)
 values ('11446d20-9c92-4a33-80f3-90d0132a0b83','7e306626-4ee9-471b-af8d-27d9f6042fc9','422affb5-4d1e-45e8-b2a4-2623f08b95ef','3b43e39f-4346-4218-8434-a53130e8be49','daveh.customers.drachtio.org');
+
+insert into system_information (domain_name, sip_domain_name, monitoring_domain_name) values ('jambonz.xyz', 'sip.jambonz.xyz', 'grafana.jambonz.xyz');
